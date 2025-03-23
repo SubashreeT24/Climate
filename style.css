@@ -1,6 +1,7 @@
+/* Body - Background color */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f0f8ff; /* Light blue background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,56 +9,81 @@ body {
   margin: 0;
 }
 
+/* Container styling */
 .container {
-  background-color: white;
+  background-color: #ffffff; /* White background */
   padding: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   text-align: center;
   width: 100%;
   max-width: 400px;
+  border: 2px solid #4CAF50; /* Green border */
 }
 
+/* Heading styling */
 h1 {
-  font-size: 24px;
+  font-size: 30px;
+  color: #ff6347; /* Tomato red color */
   margin-bottom: 20px;
 }
 
+/* Label styling */
 label {
-  font-size: 18px;
+  font-size: 20px;
+  color: #ff1493; /* Deep pink */
   margin-bottom: 10px;
   display: block;
 }
 
+/* Input field styling */
 input {
-  padding: 8px;
+  padding: 12px;
   width: 80%;
   margin: 10px 0;
-  font-size: 16px;
-  border: 1px solid #ddd;
+  font-size: 18px;
+  border: 2px solid #4CAF50; /* Green border */
   border-radius: 4px;
+  background-color: #f7f7f7;
+  transition: border-color 0.3s ease;
 }
 
+/* Change border color on focus */
+input:focus {
+  border-color: #ff6347; /* Red border on focus */
+  outline: none;
+  background-color: #ffffff; /* White background on focus */
+}
+
+/* Button styling */
 button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
+  padding: 14px 30px;
+  background-color: #ff6347; /* Tomato red background */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #ff4500; /* Darker red on hover */
 }
 
+/* Weather result section */
 .weather-result {
   margin-top: 20px;
   display: none;
+  background-color: #e6f7ff; /* Light blue background for result */
+  padding: 15px;
+  border-radius: 6px;
+  border: 2px solid #4CAF50; /* Green border */
 }
 
+/* Paragraph styling inside weather result */
 .weather-result p {
-  font-size: 18px;
+  font-size: 20px;
   margin: 5px 0;
+  color: #2f4f4f; /* Dark gray text */
 }
-
