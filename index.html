@@ -4,27 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Predictor</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Weather Predictor</h1>
         <p>Enter a country to get the current temperature and wind speed</p>
-
-        <form id="weather-form">
-            <div class="input-group">
-                <input type="text" id="country" name="country" placeholder="Enter country" required>
-                <button type="submit">Get Weather</button>
-            </div>
-        </form>
-
-        <div id="result">
-            <h2>Weather Information</h2>
-            <p id="temperature"></p>
-            <p id="wind-speed"></p>
-        </div>
+        <input type="text" id="countryInput" placeholder="Enter country name">
+        <button onclick="getWeather()">Get Weather</button>
+        <div id="weatherInfo"></div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
