@@ -1,45 +1,40 @@
-function getWeather() {
-    const country = document.getElementById('countryInput').value.trim();
-    const weatherInfo = document.getElementById('weatherInfo');
-    
-    if (!country) {
-        weatherInfo.innerHTML = '<p class="error">Please enter a country name</p>';
-        return;
+// Your OpenWeatherMap API key
+const apiKey = 'f596984e0ab7f7b490242969fe3fb529'; // Replace with your API key
+
+// Function to fetch weather data
+async function getWeatherData() {
+  const country = document.getElementById("country").value;
+  const weatherResult = document.getElementById("weather-result");
+
+  // Check if input is empty
+  if (!country) {
+    alert("Please enter a country name.");
+    return;
+  }
+
+  // Fetch weather data from OpenWeatherMap API
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${country}&units=metric&appid=${apiKey}`;
+  
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.cod === 200) {
+      const temp = data.main.temp;
+      const windSpeed = data.wind.speed;
+      const countryName = data.name;
+
+      // Display the weather information
+      document.getElementById("country-name").innerText = `Country: ${countryName}`;
+      document.getElementById("temperature").innerText = `Temperature: ${temp}°C`;
+      document.getElementById("windspeed").innerText = `Wind Speed: ${windSpeed} m/s`;
+
+      // Show the result section
+      weatherResult.style.display = 'block';
+    } else {
+      alert("Country not found. Please try again.");
     }
-    
-    weatherInfo.innerHTML = '<p>Loading weather data...</p>';
-    
-    // API Ninjas endpoint
-    const apiUrl = `https://api.api-ninjas.com/v1/weather?city=${encodeURIComponent(country)}`;
-    
-    fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-            'X-Api-Key': 'f596984e0ab7f7b490242969fe3fb529', // Replace with your actual API key
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (Object.keys(data).length === 0) {
-            weatherInfo.innerHTML = '<p class="error">Country not found or invalid.</p>';
-        } else {
-            weatherInfo.innerHTML = `
-                <h2>Weather Information</h2>
-                <p>Temperature: ${data.temp}°C</p>
-                <p>Feels Like: ${data.feels_like}°C</p>
-                <p>Wind Speed: ${data.wind_speed} m/s</p>
-                <p>Wind Direction: ${data.wind_degrees}°</p>
-                <p>Humidity: ${data.humidity}%</p>
-            `;
-        }
-    })
-    .catch(error => {
-        weatherInfo.innerHTML = `<p class="error">Error: ${error.message}</p>`;
-    });
+  } catch (error) {
+    alert("An error occurred. Please try again.");
+  }
 }
